@@ -96,7 +96,7 @@ Cross-attention is crucial for interaction prediction because:
 - I have only tested one embedding models for proteins and one for SMILES. It a realistic setting the model should be tested with multiple different embeddings and evaluate each one.
 - Feature engineering: Add additional protein/chemical properties as inputs
 - It's also possible to use ensemble methods to combine predictions from multiple architectures. 
-
+- Using tools such as bertviz it's possible to visualize the attention weights and infer which parts of proteins are interacting with which parts of chemicals. 
   ## Alternative model ideas
 1. Instead of using the full protein sequence, one can use models such as **ScanNet** to first get the sequence of the protein's binding pockets, since most of the protein interactions are at that site. The downside is that we lose the interactions that are outside that domain.
 2. Instead of using the sequences, one can use **AlphaFold2** to first get the 3D folding of the proteins and train the models on the folding and 3D structure of chemical compounds. The advantage of this method is that it is more information-rich. However, such a model would be much more computationally demanding and has the extra step of calculating the protein foldings. Also, for some proteins, the folding may not be close to reality, which introduces more uncertainty to the model.
