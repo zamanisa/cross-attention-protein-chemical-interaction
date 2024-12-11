@@ -36,7 +36,7 @@ matplotlib>=3.4.0
 ## Usage
 
 ### Input Data Format
-**Note:** The script `scripts/kiba_fetching_sequence.py` uses the Pubchem and Uniprot APIs to fetch sequence and SMILES format for the given Uniprot IDs and Pubchem cids. While it was successful for protein sequences, the Pubchem's API was returning 'PUGREST.ServerBusy' error. Hence I created a mock dataset.
+**Note:** The script `scripts/kiba_fetching_sequence.py` uses the Pubchem and Uniprot APIs to fetch sequence and SMILES format for the given Uniprot IDs and Pubchem cids. Additionally, the script creates False data by creating new pairs of protein-compound that are not in the dataset. While it was successful for protein sequences, the Pubchem's API was returning 'PUGREST.ServerBusy' error. Hence, I created a mock dataset.
 
 Input data should be a CSV file with columns: UniProt_ID, PubChem_CID, label
 See example format in `example_data/mock_kiba_data.csv`
@@ -90,6 +90,12 @@ Cross-attention is crucial for interaction prediction because:
 - More complex to implement and train
 - Requires more computational resources
 - Using the `[:,0,:]` indexing would only give you the [CLS] token embedding, which loses position-specific information needed for cross-attention.
+
+### Possible Improvments 
+- For model evaluation right not the main script calculates the ROC and AUC. It needs more evaluation and metrics methods such as cross-validation, Add precision, recall, F1-score alongside.
+- I have only tested one embedding models for proteins and one for SMILES. It a realistic setting the model should be tested with multiple different embeddings and evaluate each one.
+- Feature engineering: Add additional protein/chemical properties as inputs
+- It's also possible to use ensemble methods to combine predictions from multiple architectures. 
 
   ## Alternative model ideas
 1. Instead of using the full protein sequence, one can use models such as **ScanNet** to first get the sequence of the protein's binding pockets, since most of the protein interactions are at that site. The downside is that we lose the interactions that are outside that domain.
