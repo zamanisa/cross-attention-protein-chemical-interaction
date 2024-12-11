@@ -36,8 +36,8 @@ matplotlib>=3.4.0
 ## Usage
 
 ### Input Data Format
-**Note:** The script `scripts/kiba_fetching_sequence.py` uses the Pubchem and Uniprot APIs to fetch sequence and SMILES format for the given Uniprot IDs and Pubchem cids. Additionally, the script creates False data by creating new pairs of protein-compound that are not in the dataset. While it was successful for protein sequences, the Pubchem's API was returning 'PUGREST.ServerBusy' error. Hence, I created a mock dataset.
-
+**Note 1:** The script `scripts/kiba_fetching_sequence.py` uses the Pubchem and Uniprot APIs to fetch sequence and SMILES format for the given Uniprot IDs and Pubchem cids. Additionally, the script creates False data by creating new pairs of protein-compound that are not in the dataset. While it was successful for protein sequences, the Pubchem's API was returning 'PUGREST.ServerBusy' error. Hence, I created a mock dataset.
+**Note 2:** My mock data is small so I used panda library. However, for large datasets it's more suitable to use alternatives like Dask. 
 Input data should be a CSV file with columns: UniProt_ID, PubChem_CID, label
 See example format in `example_data/mock_kiba_data.csv`
 
