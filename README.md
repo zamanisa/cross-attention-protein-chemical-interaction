@@ -9,6 +9,7 @@ This model predicts protein-chemical binding interactions by:
 - Encoding chemical SMILES through ChemBERTa
 - Combining representations via cross-attention
 - Fine-tuning for improved performance
+- hyper parameter optimization using grid search method
 
 ## Installation
 
